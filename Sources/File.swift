@@ -54,7 +54,12 @@ open class File: NSObject {
         return "\(Router.base)/files/\(id)/hls/media.m3u8?oauth_token=\(token)&subtitle_key=all"
     }
     
-    public var downloadUrl: String? {
+    // Link to download mp4, if file has mp4
+    public var downloadMp4Url: String? {
+        guard let token = Putio.accessToken else { return nil }
+        return hasMP4 ? "\(Router.base)/files/\(id)/mp4/download?oath_token=\(token)" : nil
+    }
+    
     // Link to download file
     public var downloadFileUrl: String? {
         guard let token = Putio.accessToken else { return nil }
@@ -397,7 +402,5 @@ extension Putio {
             completionHandler(true)
         }
     }
-    
-    public class func download(file: File, completionHandler: )
     
 }
