@@ -57,13 +57,13 @@ open class File: NSObject {
     // Link to download mp4, if file has mp4
     public var downloadMp4Url: String? {
         guard let token = Putio.accessToken else { return nil }
-        return hasMP4 ? "\(Router.base)/files/\(id)/mp4/download?oath_token=\(token)" : nil
+        return hasMP4 ? "\(Router.base)/files/\(id)/mp4/download?oauth_token=\(token)" : nil
     }
     
     // Link to download file
     public var downloadFileUrl: String? {
         guard let token = Putio.accessToken else { return nil }
-        return "\(Router.base)/files/\(id)/download?oath_token=\(token)"
+        return "\(Router.base)/files/\(id)/download?oauth_token=\(token)"
     }
     
     /// Whether the file is a directory or not
